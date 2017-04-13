@@ -1,12 +1,14 @@
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: window.exampleVideoData,
       currentData: window.exampleVideoData[0]
     };
+    this.setData = this.setData.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
+    this.props.searchYouTube(null, this.setData);
   }
 
   handleTitleClick(video) {
@@ -15,15 +17,25 @@ class App extends React.Component {
     });
   }
 
+  setData(videos) {
+    console.log(videos);
+    this.setState({
+      data: videos,
+      currentData: videos[0]
+    });
+  }
+
   render() {
     return (
         <div>
-          <Nav />
+          <Nav searchHandlerFunction={this.setData}/>
           <div className="col-md-7">
             <VideoPlayer video={this.state.currentData}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.data} clickHandlerFunction={this.handleTitleClick}/>
+            <VideoList 
+            videos={this.state.data} 
+            clickHandlerFunction={this.handleTitleClick}/>
           </div>
         </div>
     );

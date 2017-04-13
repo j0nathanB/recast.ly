@@ -1,4 +1,6 @@
 var searchYouTube = function(options, cb) {
+	options = options || 
+		{key: window.YOUTUBE_API_KEY, query: 'react', maxResults: 5};
 	var data = {
 		part: 'snippet',
 		type:'video',
@@ -13,7 +15,10 @@ var searchYouTube = function(options, cb) {
 		data: data,
 		dataType: 'json',
 		success: (function(data) {
- 	  		cb(data.items);
+			if (cb) {
+	 	  		cb(data.items);
+	 	  		console.log('search results:', data.items);				
+			}
  	  	})
 	});
 }
