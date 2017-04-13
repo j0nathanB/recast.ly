@@ -2,7 +2,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.setState = {
+    this.state = {
       data: this.props.data
     };
   }
@@ -12,10 +12,10 @@ class App extends React.Component {
         <div>
           <Nav />
           <div className="col-md-7">
-            <VideoPlayer video={this.props.data[0]}/>
+            <VideoPlayer video={this.state.data[0]}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.props.data}/>
+            <VideoList videos={this.state.data}/>
           </div>
         </div>
     );
