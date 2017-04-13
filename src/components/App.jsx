@@ -6,16 +6,14 @@ class App extends React.Component {
       data: window.exampleVideoData,
       currentData: window.exampleVideoData[0]
     };
-    //this.handleClick = this.handleClick.bind(this);
+    this.handleTitleClick = this.handleTitleClick.bind(this);
   }
 
-  // handleClick() {
-  //   this.setState(prevState => ({
-  //     currentData: 
-  //   }))
-    //get this video
-    //render VideoPlayer with video=passedIn video from
-  // },
+  handleTitleClick(video) {
+    this.setState({
+      currentData: video
+    });
+  }
 
   render() {
     return (
@@ -25,7 +23,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentData}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.data}/>
+            <VideoList videos={this.state.data} clickHandlerFunction={this.handleTitleClick}/>
           </div>
         </div>
     );

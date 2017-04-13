@@ -3,10 +3,8 @@ class VideoListEntry extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleClick(e) {
-    var title = e.target;
-    //this.props.onChange(title);
-    console.log('clicked');
+  handleClick() {
+    this.props.clickHandlerFunction(this.props.video);
   }
   
   render() {
@@ -16,7 +14,7 @@ class VideoListEntry extends React.Component {
           <img className="media-object" src={this.props.video.snippet.thumbnails.default.url} alt="" />
         </div>
         <div className="media-body">
-          <div className="video-list-entry-title" onClick={this.handleClick} >{this.props.video.snippet.title}</div>
+          <div className="video-list-entry-title" onClick={this.handleClick.bind(this)} >{this.props.video.snippet.title}</div>
           <div className="video-list-entry-detail">{this.props.video.snippet.description}</div>
         </div>
       </div>
