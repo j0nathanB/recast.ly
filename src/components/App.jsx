@@ -1,18 +1,28 @@
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      data: this.props.data
+      data: window.exampleVideoData,
+      currentData: window.exampleVideoData[0]
     };
+    //this.handleClick = this.handleClick.bind(this);
   }
+
+  // handleClick() {
+  //   this.setState(prevState => ({
+  //     currentData: 
+  //   }))
+    //get this video
+    //render VideoPlayer with video=passedIn video from
+  // },
 
   render() {
     return (
         <div>
           <Nav />
           <div className="col-md-7">
-            <VideoPlayer video={this.state.data[0]}/>
+            <VideoPlayer video={this.state.currentData}/>
           </div>
           <div className="col-md-5">
             <VideoList videos={this.state.data}/>
