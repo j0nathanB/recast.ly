@@ -17,7 +17,6 @@ var searchYouTube = function(options, cb) {
 		success: (function(data) {
 			if (cb) {
 	 	  		cb(data.items);
-	 	  		console.log('search results:', data.items);				
 			}
  	  	})
 	});
